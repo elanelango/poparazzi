@@ -46,19 +46,27 @@ public class PopActivity extends AppCompatActivity {
                 JSONArray photosJSON = null;
                 try {
                     photosJSON = response.getJSONArray("data");
-                    for(int i = 0; i < photosJSON.length(); i++) {
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.i("PopActivity", "data not found");
+                }
+                for (int i = 0; i < photosJSON.length(); i++) {
+                    try {
                         JSONObject photoJSON = photosJSON.getJSONObject(i);
                         Photo photo = new Photo();
+
+                        photo.profilePicURL = photoJSON.getJSONObject("user").getString("profile_picture");
                         photo.username = photoJSON.getJSONObject("user").getString("username");
-                        photo.caption = photoJSON.getJSONObject("caption").getString("text");
+                        photo.createdTime = photoJSON.getInt("created_time");
+                        photo.caption = !photoJSON.isNull("caption")? photoJSON.getJSONObject("caption").getString("text") : "";
                         photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
                         photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
                         photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
 
                         photos.add(photo);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch(JSONException e) {
-                    e.printStackTrace();
                 }
 
                 aPhotos.notifyDataSetChanged();
