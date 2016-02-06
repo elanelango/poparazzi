@@ -4,7 +4,7 @@ Project done as part of CodePath Android Bootcamp
 
 **Poparazzi** is an android app that allows a user to check out popular photos from Instagram. The app utilizes Instagram API to display images and basic image information to the user.
 
-Time spent: **5** hours spent in total
+Time spent: **6** hours spent in total
 
 ## User Stories
 
@@ -20,8 +20,8 @@ The following **optional** features are implemented:
 * [X] User can **pull-to-refresh** popular stream to get the latest popular photos
 * [ ] Show latest comments for each photo
 * [ ] Display each photo with the same style and proportions as the real Instagram
-* [ ] Display each user profile image using a RoundedImageViewDisplay each user profile image using a [RoundedImageView](https://github.com/vinc3m1/RoundedImageView)
-* [ ] Display a nice default placeholder graphic for each image during loading
+* [X] Display each user profile image using a RoundedImageViewDisplay each user profile image using a [RoundedImageView](https://github.com/vinc3m1/RoundedImageView)
+* [X] Display a nice default placeholder graphic for each image during loading
 * [ ] Improved the user interface through styling and coloring
 
 The following **bonus** features are implemented:
@@ -50,6 +50,7 @@ Describe any challenges encountered while building the app.
 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
 - [Picasso](http://square.github.io/picasso/) - Image loading and caching library for Android
+- [RoundedImageView](https://github.com/vinc3m1/RoundedImageView) - Round image view for profile pics
 
 ## License
 

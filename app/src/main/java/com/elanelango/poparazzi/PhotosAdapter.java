@@ -1,6 +1,7 @@
 package com.elanelango.poparazzi;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
@@ -41,8 +44,14 @@ public class PhotosAdapter extends ArrayAdapter<Photo> {
 
         ivPhoto.setImageResource(0);
 
-        Picasso.with(getContext()).load(photo.imageUrl).into(ivPhoto);
-        Picasso.with(getContext()).load(photo.profilePicURL).into(ivProfilePic);
+        Picasso.with(getContext())
+                .load(photo.imageUrl)
+                .placeholder(R.drawable.placeholder)
+                .into(ivPhoto);
+
+        Picasso.with(getContext())
+                .load(photo.profilePicURL)
+                .into(ivProfilePic);
         return convertView;
     }
 }
