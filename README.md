@@ -1,4 +1,3 @@
-# poparazzi
 Project done as part of CodePath Android Bootcamp
 
 # Project 1 - *Poparazzi*
@@ -11,14 +10,14 @@ Time spent: **5** hours spent in total
 
 The following **required** functionality is completed:
 
-* [Y] User can **scroll through current popular photos** from Instagram
-* [Y] For each photo displayed, user can see the following details:
-  * [Y] Graphic, Caption, Username
-  * [Y] Relative timestamp, like count, user profile image
+* [X] User can **scroll through current popular photos** from Instagram
+* [X] For each photo displayed, user can see the following details:
+  * [X] Graphic, Caption, Username
+  * [X] Relative timestamp, like count, user profile image
 
 The following **optional** features are implemented:
 
-* [Y] User can **pull-to-refresh** popular stream to get the latest popular photos
+* [X] User can **pull-to-refresh** popular stream to get the latest popular photos
 * [ ] Show latest comments for each photo
 * [ ] Display each photo with the same style and proportions as the real Instagram
 * [ ] Display each user profile image using a RoundedImageViewDisplay each user profile image using a [RoundedImageView](https://github.com/vinc3m1/RoundedImageView)
