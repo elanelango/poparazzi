@@ -1,5 +1,6 @@
 package com.elanelango.poparazzi;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import cz.msebera.android.httpclient.Header;
 public class PopActivity extends AppCompatActivity {
 
     public static final String CLIENT_ID = "e05c462ebd86446ea48a5af73769b602";
+    private SwipeRefreshLayout swipeContainer;
     private ArrayList<Photo> photos;
     private PhotosAdapter aPhotos;
 
@@ -27,12 +29,20 @@ public class PopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop);
 
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         photos = new ArrayList<>();
         aPhotos = new PhotosAdapter(this, photos);
 
         ListView lvPhotos = (ListView) findViewById(R.id.lvPhotos);
         lvPhotos.setAdapter(aPhotos);
 
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                aPhotos.clear();
+                fetchPopularPhotos();
+            }
+        });
         fetchPopularPhotos();
     }
 
@@ -70,11 +80,12 @@ public class PopActivity extends AppCompatActivity {
                 }
 
                 aPhotos.notifyDataSetChanged();
+                swipeContainer.setRefreshing(false);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-
+                Log.i("INFO", "Fetch timeline error: " + throwable.toString());
             }
         });
     }
