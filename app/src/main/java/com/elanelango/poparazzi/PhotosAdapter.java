@@ -1,7 +1,9 @@
 package com.elanelango.poparazzi;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.Typeface;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
@@ -39,8 +39,10 @@ public class PhotosAdapter extends ArrayAdapter<Photo> {
 
         tvUsername.setText(photo.username);
         tvTime.setText(photo.getTime());
-        tvCaption.setText(photo.caption);
-        tvLikes.setText(Integer.toString(photo.likesCount) + " likes");
+        SpannableString styledCaption = new SpannableString(photo.username + " " + photo.caption);
+        styledCaption.setSpan(new StyleSpan(Typeface.BOLD), 0, photo.username.length(), 0);
+        tvCaption.setText(styledCaption);
+        tvLikes.setText("\u2665 " + Integer.toString(photo.likesCount) + " likes");
 
         ivPhoto.setImageResource(0);
 
@@ -52,6 +54,7 @@ public class PhotosAdapter extends ArrayAdapter<Photo> {
         Picasso.with(getContext())
                 .load(photo.profilePicURL)
                 .into(ivProfilePic);
+
         return convertView;
     }
 }

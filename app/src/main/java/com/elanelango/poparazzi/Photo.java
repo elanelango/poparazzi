@@ -10,6 +10,7 @@ public class Photo {
     public String caption;
     public String imageUrl;
     public int imageHeight;
+    public int imageWidth;
     public int likesCount;
 
     public String getTime() {

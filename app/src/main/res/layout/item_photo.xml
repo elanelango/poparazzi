@@ -29,11 +29,16 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/ivProfilePic"
         android:layout_alignTop="@id/ivProfilePic"
+        android:layout_marginLeft="6dip"
+        android:layout_marginStart="6dip"
         android:layout_toEndOf="@id/ivProfilePic"
         android:layout_toRightOf="@id/ivProfilePic"
         android:gravity="center_vertical"
+        android:text="username"
+        android:textColor="#2F6D82"
+        android:textSize="15sp"
 
-        android:text="username" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvTime"
@@ -45,9 +50,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_alignTop="@id/ivProfilePic"
+        android:layout_marginEnd="12dip"
+        android:layout_marginRight="12dip"
         android:gravity="center"
+        android:text="1h"
 
-        android:text="1h" />
+        android:textColor="#b3b3b3" />
 
     <ImageView
         android:id="@+id/ivPhoto"
@@ -55,24 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivProfilePic"
-
+        android:layout_marginTop="6dip"
         android:adjustViewBounds="true"
-        android:minHeight="50dp"
-        android:scaleType="fitXY" />
-
-    <TextView
-        android:id="@+id/tvCaption"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ivPhoto"
-
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="Caption"
-        android:textSize="20sp" />
+        android:scaleType="fitCenter"
+        />
 
     <TextView
         android:id="@+id/tvLikes"
@@ -81,8 +75,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/tvCaption"
+        android:layout_below="@id/ivPhoto"
+        android:text="\u2665 likes"
+        android:layout_marginTop="6dp"
 
-        android:text="likes"
+        android:textColor="#2F6D82"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCaption"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvLikes"
+        android:layout_marginTop="6dp"
+
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="Caption"
+        android:textColor="#2F6D82"
         android:textSize="15sp" />
+
+
 </RelativeLayout>

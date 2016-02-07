@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
@@ -46,6 +48,32 @@ public class PopActivity extends AppCompatActivity {
         fetchPopularPhotos();
     }
 
+    // Used for testing
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+
+            InputStream is = getAssets().open("test_response.json");
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+
+    }
+
     public void fetchPopularPhotos() {
         String url = "https://api.instagram.com/v1/media/popular?client_id=" + CLIENT_ID;
         AsyncHttpClient client = new AsyncHttpClient();
@@ -56,10 +84,13 @@ public class PopActivity extends AppCompatActivity {
                 JSONArray photosJSON = null;
                 try {
                     photosJSON = response.getJSONArray("data");
+                    /*String jsonStr = loadJSONFromAsset();
+                    photosJSON = new JSONObject(jsonStr).getJSONArray("data");*/
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.i("PopActivity", "data not found");
                 }
+
                 for (int i = 0; i < photosJSON.length(); i++) {
                     try {
                         JSONObject photoJSON = photosJSON.getJSONObject(i);
@@ -71,6 +102,7 @@ public class PopActivity extends AppCompatActivity {
                         photo.caption = !photoJSON.isNull("caption")? photoJSON.getJSONObject("caption").getString("text") : "";
                         photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
                         photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
+                        photo.imageWidth = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("width");
                         photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
 
                         photos.add(photo);
