@@ -105,6 +105,16 @@ public class PopActivity extends AppCompatActivity {
                         photo.imageWidth = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("width");
                         photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
 
+                        JSONArray commentsJSON = photoJSON.getJSONObject("comments").getJSONArray("data");
+                        for (int j = 0; j < commentsJSON.length(); j++) {
+                            JSONObject commentJSON = commentsJSON.getJSONObject(j);
+                            Comment comment = new Comment();
+                            comment.time = commentJSON.getInt("created_time");
+                            comment.username = commentJSON.getJSONObject("from").getString("username");
+                            comment.text = commentJSON.getString("text");
+                            photo.comments.add(comment);
+                        }
+
                         photos.add(photo);
                     } catch (Exception e) {
                         e.printStackTrace();

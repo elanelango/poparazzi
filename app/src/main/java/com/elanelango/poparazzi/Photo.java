@@ -1,5 +1,7 @@
 package com.elanelango.poparazzi;
 
+import java.util.ArrayList;
+
 /**
  * Created by eelango on 2/3/16.
  */
@@ -12,6 +14,8 @@ public class Photo {
     public int imageHeight;
     public int imageWidth;
     public int likesCount;
+
+    public ArrayList<Comment> comments = new ArrayList<>();
 
     public String getTime() {
         long currTime = System.currentTimeMillis() / 1000L;

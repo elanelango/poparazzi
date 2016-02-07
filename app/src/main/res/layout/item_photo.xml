@@ -93,8 +93,6 @@
         android:layout_below="@+id/tvLikes"
         android:layout_marginTop="6dp"
 
-        android:ellipsize="end"
-        android:maxLines="3"
         android:text="Caption"
         android:textColor="#2F6D82"
         android:textSize="15sp" />
