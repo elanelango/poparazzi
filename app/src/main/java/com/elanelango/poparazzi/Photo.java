@@ -6,11 +6,15 @@ import java.util.ArrayList;
  * Created by eelango on 2/3/16.
  */
 public class Photo {
+    public String type;
     public String profilePicURL;
     public String username;
     public int createdTime;
     public String caption;
     public String imageUrl;
+    public String videoUrl;
+    public int videoWidth;
+    public int videoHeight;
     public int imageHeight;
     public int imageWidth;
     public int likesCount;

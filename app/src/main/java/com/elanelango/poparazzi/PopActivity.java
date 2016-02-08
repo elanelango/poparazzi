@@ -99,8 +99,15 @@ public class PopActivity extends AppCompatActivity {
                         photo.profilePicURL = photoJSON.getJSONObject("user").getString("profile_picture");
                         photo.username = photoJSON.getJSONObject("user").getString("username");
                         photo.createdTime = photoJSON.getInt("created_time");
-                        photo.caption = !photoJSON.isNull("caption")? photoJSON.getJSONObject("caption").getString("text") : "";
+                        photo.caption = !photoJSON.isNull("caption") ? photoJSON.getJSONObject("caption").getString("text") : "";
+                        photo.type = photoJSON.getString("type");
                         photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
+                        if (photo.type.equals("video")) {
+                            photo.videoUrl = photoJSON.getJSONObject("videos").getJSONObject("standard_resolution").getString("url");
+                            photo.videoWidth = photoJSON.getJSONObject("videos").getJSONObject("standard_resolution").getInt("width");
+                            photo.videoHeight = photoJSON.getJSONObject("videos").getJSONObject("standard_resolution").getInt("height");
+                        }
+
                         photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
                         photo.imageWidth = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("width");
                         photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
