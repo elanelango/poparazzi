@@ -4,7 +4,7 @@ Project done as part of CodePath Android Bootcamp
 
 **Poparazzi** is an android app that allows a user to check out popular photos from Instagram. The app utilizes Instagram API to display images and basic image information to the user.
 
-Time spent: **6** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
@@ -38,13 +38,18 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Video Walkthrough](https://raw.githubusercontent.com/elanelango/Poparazzi/master/demo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+* Spent a lot of time trying to proportion the images to fit the width of screen and right aspect ratio. Was confused about the white spaces in the sides.
+After further analysis, it turned out itself with the white spaces. The pictures used on instagram sites are higher
+quality but the ones returned by the API are lower quality and some of them have spaces in the sides.
+* SpannedString Vs SpannableString confusions
 
 ## Open-source libraries used
 
